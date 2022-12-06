@@ -1,0 +1,74 @@
+\documentclass[a4paper]{article}
+
+\usepackage{sujet}
+
+\begin{document}
+
+\titre{TD 1A Algorithmique}{Initiation aux tableaux}
+%%
+\begin{center}
+  \Large\bf Communication et sobriété numérique
+\end{center}
+
+\noindent\rule{\linewidth}{.6pt}
+
+\section*{Contexte}
+
+Afin de regagner de la souveraineté sur le secteur stratégique des réseaux sociaux pour collégiens, votre société a pour mission de développer une nouvelle application de communication rapide et bienveillante~: Bikbok.
+
+Votre équipe est chargée d'écrire un démonstrateur capable d'envoyer les messages. Une autre équipe se charge de la réception et de l'affichage. Les types des messages sont :
+
+\begin{itemize}[itemsep=0.2ex]
+\item[$\cdot$] Texte
+\item[$\cdot$] Photo ?
+\item[$\cdot$] Vocal
+\item[$\cdot$] Vidéo
+\end{itemize}
+
+Pour la démonstration prévue dans deux semaines, le message envoyé sera : \hword{Pour ce soir : pâtes ou pizza ?}. Malgré le caractère confidentiel du message, il  est envoyé en clair (il n'est pas chiffré). Ce message comprend 31 caractères, dure 3 secondes en vocal et en vidéo.
+
+\section{Message texte}
+
+\lstinputlisting[language=Ada]{Ada/texte.ads}
+
+\begin{itemize}[itemsep=0.2ex]
+\item[$\cdot$] Ne rien envoyer si le message est vide.
+\item[$\cdot$] Coût numérique : afficher le nombre d'octets utilisés
+\item[$\cdot$] évaluer le coût CO2 ? ... ou plutôt par rapport à un mail  'moyen'
+\end{itemize}
+
+\section{Message vocal}
+
+\begin{itemize}
+\item[$\star$] Écrire un programme qui enregistre un son et l'envoie (utiliser l'acteur Vocal ci-dessous).
+\item[$\cdot$] Calculer la taille des données envoyées (en octets) pour le message de test, sachant que le son est échantillonné à 44000 Hz et un échantillon occupe 2 octets.
+\item[$\cdot$] coût CO2 et comparaison par rapport au message texte ????
+\end{itemize}
+
+La musique ou le son se compresse en général très bien. Cherchons à transmettre moins d'octets.
+
+\begin{itemize}
+\item[$\star$] En préambule, écrire le corps de la procédure Copier ci-après. Cette procédure doit copier une partie du tableau Source dans le tableau Dest.
+  La partie copiée commence à la position Spos et sa longueur est Len. Elle est copiée à partir de la position Dpos du tableau Dest.
+
+  \begin{lstlisting}[language=Ada]
+    procedure Copier(Source : T_Tab ; SPos, Dpos, Len : Integer ; Dest : in out T_Tab) 
+  \end{lstlisting}
+  
+  \item[$\star\star$] En utilisant l'acteur Compression, améliorez votre programme pour qu'il transmette moins d'octets.
+  \end{itemize}
+
+\lstinputlisting[language=Ada]{Ada/vocal.ads}
+
+\lstinputlisting[language=Ada]{Ada/compression.ads}
+
+\section{Message vidéo}
+
+
+
+Format 1920x1080
+
+
+\hword{highlight box} example
+
+\end{document}

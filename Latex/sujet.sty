@@ -1,0 +1,68 @@
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{fdsymbol}
+
+\usepackage{enumitem}
+
+\RequirePackage[left=2cm,right=2cm,top=1.5cm,bottom=2cm]{geometry}
+\RequirePackage[dvipsnames]{xcolor}
+\RequirePackage{listings}
+\RequirePackage{tcolorbox}
+
+\def\star{\medwhitestar}
+
+% create a box to highlight word
+\newtcbox{\hword}[1][orange]{on line, arc = 0.3mm,auto outer arc,colback = #1!12!, colframe = #1!60!,colupper = black, boxsep =0mm, left =0.3mm, right = 0.3mm, top =0.4mm, bottom = 0.4mm,boxrule =0.2mm, bottomrule =0.2mm, toprule = 0.2mm}
+
+% default code style
+
+\lstset{
+  framerule=1pt,
+  inputencoding=utf8x,
+  frame=tb,
+  emphstyle={\small\ttfamily\bfseries\color{Orange}},
+%  numbers=left,
+%  numberstyle= \tiny\color{black},
+  basicstyle = \small\sffamily,
+  keywordstyle    = \bfseries\color{BrickRed},
+  identifierstyle = \color{black},
+  stringstyle     = \bfseries\color{ForestGreen},
+  commentstyle    = \color{Violet},
+  breaklines      =   true,
+  columns         =   fixed,
+  basewidth       =   .5em,
+  backgroundcolor=\color{Gray!5},
+  tabsize=2,
+  showspaces=false,
+  showstringspaces=false,
+  literate        =
+  {é}{{\'e}}{1}%
+  {è}{{\`e}}{1}%
+  {à}{{\`a}}{1}%
+  {â}{{\^a}}{1}%%%
+  {ç}{{\c{c}}}{1}%
+  {œ}{{\oe}}{1}%
+  {ù}{{\`u}}{1}%
+  {É}{{\'E}}{1}%
+  {È}{{\`E}}{1}%
+  {À}{{\`A}}{1}%
+  {Ç}{{\c{C}}}{1}%
+  {Œ}{{\OE}}{1}%
+  {Ê}{{\^E}}{1}%
+  {ê}{{\^e}}{1}%
+  {î}{{\^i}}{1}%
+  {ï}{{\"i}}{1}%%%
+  {ô}{{\^o}}{1}%
+  {û}{{\^u}}{1}%
+}
+
+\newcommand{\titre}[2]{
+  
+  \begin{center}
+    \textbf{\large #1} \\
+    \textbf{#2}
+  \end{center}
+
+  \noindent\rule{\linewidth}{.6pt}
+}
