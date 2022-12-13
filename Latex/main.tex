@@ -26,14 +26,18 @@ Votre équipe est chargée d'écrire un démonstrateur capable d'envoyer les mes
 \item[$\cdot$] Vidéo
 \end{itemize}
 
-Pour la démonstration prévue dans deux semaines, le message envoyé sera : \hword{Pour ce soir : pâtes ou pizza ?}. Malgré le caractère confidentiel du message, il  est envoyé en clair (il n'est pas chiffré). Ce message comprend 31 caractères, dure 3 secondes en vocal et en vidéo.
+Pour la démonstration prévue dans deux semaines, le message envoyé sera : \hword{Pour ce soir (@Kollok) : pâtes ou pizza ?}. Malgré le caractère confidentiel du message, il  est envoyé en clair -- il n'est pas chiffré. Ce message comprend 41 caractères, dure 3 secondes en vocal et en vidéo.
 
 \section{Message texte}
 
 \lstinputlisting[language=Ada]{Ada/texte.ads}
 
+%%
+%% Idée : trouver le destinataire dans le message, sous la forme @blabla   ajouter une fonction est_alphanum
+%%
+
 \begin{itemize}[itemsep=0.2ex]
-\item[$\cdot$] Ne rien envoyer si le message est vide.
+\item[$\cdot$] Ne rien envoyer si le message est vide / signaler s'il n'y a pas de destinataire ?
 \item[$\cdot$] Coût numérique : afficher le nombre d'octets utilisés
 \item[$\cdot$] Évaluer le coût CO2 ? ... ou plutôt par rapport à un mail  'moyen'
 \end{itemize}
@@ -46,7 +50,7 @@ Pour la démonstration prévue dans deux semaines, le message envoyé sera : \hw
 \item[$\cdot$] coût CO2 et comparaison par rapport au message texte ????
 \end{itemize}
 
-La musique ou le son se compresse en général très bien. Cherchons à transmettre moins d'octets.
+La musique ou le son se compresse en général très bien. Pour ne pas gaspiller les ressources, cherchons à transmettre moins d'octets.
 
 \begin{itemize}
 \item[$\star$] En préambule, écrire le corps de la procédure Copier ci-après. Cette procédure doit copier une partie du tableau Source dans le tableau Dest.
