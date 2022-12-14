@@ -7,7 +7,7 @@
 \titre{TD 1A Algorithmique}{Initiation aux tableaux}
 %%
 \begin{center}
-  \Large\bf Communication et sobriété numérique
+  \Large\bf Communication numérique et tempérance  %% ou : retenue, frugalité, sobriété
 \end{center}
 
 \noindent\rule{\linewidth}{.6pt}
@@ -26,7 +26,7 @@ Votre équipe est chargée d'écrire un démonstrateur capable d'\textbf{envoyer
 \item[$\cdot$] Vidéo
 \end{itemize}
 
-Pour la démonstration prévue dans deux semaines, le message envoyé sera :
+Pour la démonstration prévue dans deux semaines, le message envoyé sera par exemple :
 
 \smallskip
 \centerline{\hword{Pour ce soir (@kollok) : pâtes ou pizza ?}}
@@ -36,13 +36,22 @@ Malgré le caractère confidentiel du message, il  est envoyé en clair -- sans 
 
 \section{Message texte}
 
-Écrire un petit programme qui~:
+$\star$ Écrire un petit programme qui~:
 
 \begin{itemize}[itemsep=0.2ex]
 \item[$\cdot$] Utilise l'acteur Texte ;
 \item[$\cdot$] Envoie le message qui sera tapé par l'utilisateur (dans le champ texte de l'application).
 \item[$\cdot$] Compte les destinataires apparaissant dans le message (e.g. @Estelle, @Leo, @Thomas). Une fonction auxiliaire sera bienvenue.
 \end{itemize}
+
+Une chaîne de caractères (String) est un tableau~:
+
+\begin{center}
+  \begin{tabular}{c|cccccccccccccccccccc}
+{\large\strut}   Indice & 1 & 2 & 3 & 4 & 5 & 6 & 7 & ... \\[1ex]
+{\large\strut}   Cellule & \cell{P} & \cell{o} & \cell{u} & \cell{r} & \cell{\ } & \cell{c} & \cell{e} & ... \\
+  \end{tabular}
+\end{center}
 
 \lstinputlisting[language=Ada]{Ada/texte.ads}
 
@@ -52,13 +61,13 @@ Malgré le caractère confidentiel du message, il  est envoyé en clair -- sans 
 
 \begin{itemize}[itemsep=0.2ex]
 \item[$\cdot$] Coût numérique : afficher le nombre d'octets utilisés
-\item[$\cdot$] Évaluer le coût CO2 ? ... ou plutôt par rapport à un mail  'moyen'
+\item[$\cdot$] Évaluer le coût CO2 ? ... ou plutôt par rapport à un SMS
 \end{itemize}
 
 \section{Message vocal}
 
 \begin{itemize}
-\item[$\star$] Écrire un programme qui enregistre un son et l'envoie (utiliser l'acteur Vocal ci-dessous).
+\item[$\star$] Écrire un programme qui enregistre un son et l'envoie tel quel (utiliser l'acteur Vocal ci-dessous).
 \item[$\cdot$] Calculer la taille des données envoyées (en octets) pour le message de test, sachant que le son est échantillonné à 44000 Hz et un échantillon occupe 2 octets.
 \item[$\cdot$] coût CO2 et comparaison par rapport au message texte ????
 \end{itemize}
