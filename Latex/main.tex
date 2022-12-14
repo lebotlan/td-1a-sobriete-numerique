@@ -17,7 +17,7 @@
 Afin de regagner de la souveraineté sur le secteur stratégique des réseaux sociaux pour collégiens, votre société a pour mission de développer une nouvelle application de communication rapide et bienveillante~: Bikbok.
 %% et surtout sensibilisant l'utilisateur aux problèmes d'environnement en affichant l'empreinte carbone du message
 
-Votre équipe est chargée d'écrire un démonstrateur capable d'envoyer les messages. Une autre équipe se charge de la réception et de l'affichage. Les types des messages sont :
+Votre équipe est chargée d'écrire un démonstrateur capable d'\textbf{envoyer} les messages. Une autre équipe se charge de la réception et de l'affichage. Les types des messages sont :
 
 \begin{itemize}[itemsep=0.2ex]
 \item[$\cdot$] Texte
@@ -26,9 +26,23 @@ Votre équipe est chargée d'écrire un démonstrateur capable d'envoyer les mes
 \item[$\cdot$] Vidéo
 \end{itemize}
 
-Pour la démonstration prévue dans deux semaines, le message envoyé sera : \hword{Pour ce soir (@Kollok) : pâtes ou pizza ?}. Malgré le caractère confidentiel du message, il  est envoyé en clair -- il n'est pas chiffré. Ce message comprend 41 caractères, dure 3 secondes en vocal et en vidéo.
+Pour la démonstration prévue dans deux semaines, le message envoyé sera :
+
+\smallskip
+\centerline{\hword{Pour ce soir (@kollok) : pâtes ou pizza ?}}
+\smallskip
+
+Malgré le caractère confidentiel du message, il  est envoyé en clair -- sans être chiffré. Ce message comprend 41 caractères, dure 3 secondes en vocal et en vidéo.
 
 \section{Message texte}
+
+Écrire un petit programme qui~:
+
+\begin{itemize}[itemsep=0.2ex]
+\item[$\cdot$] Utilise l'acteur Texte ;
+\item[$\cdot$] Envoie le message qui sera tapé par l'utilisateur (dans le champ texte de l'application).
+\item[$\cdot$] Compte les destinataires apparaissant dans le message (e.g. @Estelle, @Leo, @Thomas). Une fonction auxiliaire sera bienvenue.
+\end{itemize}
 
 \lstinputlisting[language=Ada]{Ada/texte.ads}
 
@@ -37,7 +51,6 @@ Pour la démonstration prévue dans deux semaines, le message envoyé sera : \hw
 %%
 
 \begin{itemize}[itemsep=0.2ex]
-\item[$\cdot$] Ne rien envoyer si le message est vide / signaler s'il n'y a pas de destinataire ?
 \item[$\cdot$] Coût numérique : afficher le nombre d'octets utilisés
 \item[$\cdot$] Évaluer le coût CO2 ? ... ou plutôt par rapport à un mail  'moyen'
 \end{itemize}

@@ -4,7 +4,7 @@ package Texte is
   function Lire_champ_texte return String ;
   
   -- Envoie un message. 
-  -- Pos_Destinataire indique à quelle position se trouve le '@' du destinataire dans le message.
-  procedure Envoyer_texte(Message : String ; Pos_Destinataire : Integer) ;
+  -- Il faut indiquer le nombre de destinataires.
+  procedure Envoyer_texte(Message : String ; Nb_Destinataires : Integer) ;
   
 end Texte ;
