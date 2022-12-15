@@ -4,17 +4,21 @@
 
 \begin{document}
 
-\titre{TD 1A Algorithmique}{Initiation aux tableaux}
+\titre{TD 1A Algorithmique}{Initiation aux tableaux\\Durée : 2H30}
 %%
 \begin{center}
-  \Large\bf Communication numérique et tempérance  %% ou : retenue, frugalité, sobriété
+  \Large\bf Communication numérique et sobriété
 \end{center}
 
 \noindent\rule{\linewidth}{.6pt}
 
+\bigskip
+
+Source : les estimations environnementales proviennent de l'Ademe (\url{www.ademe.fr}).
+
 \section*{Contexte}
 
-Afin de regagner de la souveraineté sur le secteur stratégique des réseaux sociaux pour collégiens, votre société a pour mission de développer une nouvelle application de communication rapide et bienveillante~: Bikbok.
+Afin de regagner en souveraineté sur le secteur stratégique des réseaux sociaux pour collégiens, votre société a pour mission de développer une nouvelle application de communication rapide et bienveillante~: Bikbok.
 %% et surtout sensibilisant l'utilisateur aux problèmes d'environnement en affichant l'empreinte carbone du message
 
 Votre équipe est chargée d'écrire un démonstrateur capable d'\textbf{envoyer} les messages. Une autre équipe se charge de la réception et de l'affichage. Les types des messages sont :
@@ -26,10 +30,10 @@ Votre équipe est chargée d'écrire un démonstrateur capable d'\textbf{envoyer
 \item[$\cdot$] Vidéo
 \end{itemize}
 
-Pour la démonstration prévue dans deux semaines, le message envoyé sera par exemple :
+Pour la démonstration prévue dans deux semaines, le message envoyé sera, par exemple :
 
 \smallskip
-\centerline{\hword{Pour ce soir (@kollok) : pâtes ou pizza ?}}
+\centerline{\hword{\ Pour ce soir (@kollok) : pâtes ou pizza ?\ }}
 \smallskip
 
 Malgré le caractère confidentiel du message, il  est envoyé en clair -- sans être chiffré. Ce message comprend 41 caractères, dure 3 secondes en vocal et en vidéo.
@@ -40,8 +44,9 @@ $\star$ Écrire un petit programme qui~:
 
 \begin{itemize}[itemsep=0.2ex]
 \item[$\cdot$] Utilise l'acteur Texte ;
-\item[$\cdot$] Envoie le message qui sera tapé par l'utilisateur (dans le champ texte de l'application).
-\item[$\cdot$] Compte les destinataires apparaissant dans le message (e.g. @Estelle, @Leo, @Thomas). Une fonction auxiliaire sera bienvenue.
+\item[$\cdot$] Récupère le message tapé par l'utilisateur.
+\item[$\cdot$] Compte les destinataires mentionnés dans le message (e.g. @Estelle, @Leo, @Thomas). Une fonction auxiliaire sera bienvenue.
+\item[$\cdot$] Envoie le message.
 \end{itemize}
 
 Une chaîne de caractères (String) est un tableau~:
@@ -72,7 +77,10 @@ Une chaîne de caractères (String) est un tableau~:
 \item[$\cdot$] coût CO2 et comparaison par rapport au message texte ????
 \end{itemize}
 
-La musique ou le son se compresse en général très bien. Pour ne pas gaspiller les ressources, cherchons à transmettre moins d'octets.
+\lstinputlisting[language=Ada]{Ada/vocal.ads}
+
+La musique ou le son se compresse en général très bien sans altérer la qualité.
+Pour ne pas gaspiller les ressources, cherchons à transmettre moins d'octets.
 
 \begin{itemize}
 \item[$\star$] En préambule, écrire le corps de la procédure Copier ci-après. Cette procédure doit copier une partie du tableau Source dans le tableau Dest.
@@ -83,15 +91,37 @@ La musique ou le son se compresse en général très bien. Pour ne pas gaspiller
   \end{lstlisting}
   
   \item[$\star\star$] En utilisant l'acteur Compression, améliorez votre programme pour qu'il transmette moins d'octets.
-  \end{itemize}
+\end{itemize}
 
-\lstinputlisting[language=Ada]{Ada/vocal.ads}
+\begin{itemize}
+\item[$\cdot$] coût CO2 et comparaison par rapport au message texte ????
+\end{itemize}
+
 
 \lstinputlisting[language=Ada]{Ada/compression.ads}
 
+
+
 \section{Message vidéo}
 
+Pour la vidéo, il convient de distinguer le son et l'image. Le traitement du son est similaire à la question précédente.
 
+Pour la vidéo~:
+
+\begin{itemize}
+\item[$\cdot$] Une image d'une vidéo est une matrice de taille 1920x1080. Chaque cellule contient un pixel coloré et occupe 3 octets (rouge, vert, bleu).
+\item[$\cdot$] La vidéo est constituée d'une succession d'images, avec un débit de 25 images par seconde (25 fps).
+\item[$\cdot$] Calculer la taille de la vidéo non compressée, en octets.
+\item[$\cdot$] Coût CO2 ?
+\end{itemize}
+
+La vidéo se compresse très bien en tolérant une baisse de qualité.  (/ 120)
+
+
+
+code video ou pas ?
+
+calcul de la taille des données brutes / compressées (prendre en compte le son)
 
 Format 1920x1080
 

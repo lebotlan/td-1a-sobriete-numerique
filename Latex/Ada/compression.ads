@@ -14,9 +14,9 @@ package Compression is
    Taille_Segment_Sortie : constant Integer := Taille_Segment_Entree / Taux_Compression ;
    
    -- Compresse les données du segment d'entrée. 
-   --   Le segment d'entrée doit avoir une taille égale à Taille_Segment_max ;
+   --   Le segment d'entrée doit avoir une taille égale à Taille_Segment_Entree ;
    --   Renvoie un nouveau segment compressé, numéroté à partir de 0.
    --   La taille du segment compressé est Taille_Segment_Sortie
-   function Compresser( Entree : T_Tab ) return T_Tab ;
+   function Compresser(Entree : T_Tab) return T_Tab ;
    
 end Compression ;

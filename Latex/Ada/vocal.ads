@@ -5,7 +5,7 @@ package Vocal is
 
    -- Cette fonction enregistre un message vocal et le renvoie sous forme de tableau T_Son
    -- Les cases du tableau sont numérotées à partir de 0.
-   -- Par chance, la taille du tableau est toujours un multiple de Taille_segment_max
+   -- Par chance, la taille du tableau est toujours un multiple de Taille_Segment_Entree
    -- (voir l'acteur Compression).
    function Enregistrer_Vocal return T_Tab ;
    
