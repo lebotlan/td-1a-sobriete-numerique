@@ -14,7 +14,7 @@
 
 \bigskip
 
-Source : les estimations environnementales proviennent de l'Ademe (\url{www.ademe.fr}).
+Source : les estimations environnementales proviennent de l'Ademe (\url{impactco2.fr}).
 
 \section*{Contexte}
 
@@ -36,15 +36,15 @@ Pour la démonstration prévue dans deux semaines, le message envoyé sera, par 
 \centerline{\hword{\ Pour ce soir (@kollok) : pâtes ou pizza ?\ }}
 \smallskip
 
-Malgré le caractère confidentiel du message, il  est envoyé en clair -- sans être chiffré. Ce message comprend 41 caractères, dure 3 secondes en vocal et en vidéo.
+Malgré le caractère confidentiel du message, il est envoyé en clair -- sans être chiffré. Ce message comprend 41 caractères, dure 3 secondes en vocal et en vidéo.
 
 \section{Message texte}
 
 $\star$ Écrire un petit programme qui~:
 
 \begin{itemize}[itemsep=0.2ex]
-\item[$\cdot$] Utilise l'acteur Texte ;
-\item[$\cdot$] Récupère le message tapé par l'utilisateur.
+\item[$\cdot$] Utilise l'acteur Texte ci-dessous ;
+\item[$\cdot$] Récupère le message tapé par l'utilisateur ;
 \item[$\cdot$] Compte les destinataires mentionnés dans le message (e.g. @Estelle, @Leo, @Thomas). Une fonction auxiliaire sera bienvenue.
 \item[$\cdot$] Envoie le message.
 \end{itemize}
@@ -52,29 +52,46 @@ $\star$ Écrire un petit programme qui~:
 Une chaîne de caractères (String) est un tableau~:
 
 \begin{center}
-  \begin{tabular}{c|cccccccccccccccccccc}
-{\large\strut}   Indice & 1 & 2 & 3 & 4 & 5 & 6 & 7 & ... \\[1ex]
-{\large\strut}   Cellule & \cell{P} & \cell{o} & \cell{u} & \cell{r} & \cell{\ } & \cell{c} & \cell{e} & ... \\
+  \begin{tabular}{c|cccccccccccccccccccccccccc}
+{\large\strut}   Indice & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & ... \\[1ex]
+{\large\strut}   Cellule & \cell{P} & \cell{o} & \cell{u} & \cell{r} & \cell{\ } & \cell{c} & \cell{e} & \cell{\ } & \cell{s} & \cell{o} & \cell{i} & \cell{r} & ... \\
   \end{tabular}
 \end{center}
 
 \lstinputlisting[language=Ada]{Ada/texte.ads}
 
-%%
-%% Idée : trouver le destinataire dans le message, sous la forme @blabla   ajouter une fonction est_alphanum
-%%
+\subsection*{Coût environnemental}
+
+La taille du message se mesure en octets : il faut maximum deux octets par caractère.
+Estimons l'ordre de grandeur de l'impact sur le réchauffement climatique (i.e. le coût eCO2, équivalent CO2).
 
 \begin{itemize}[itemsep=0.2ex]
-\item[$\cdot$] Coût numérique : afficher le nombre d'octets utilisés
-\item[$\cdot$] Évaluer le coût CO2 ? ... ou plutôt par rapport à un SMS
+\item[$\cdot$] Combien de messages envoyez-vous par an ?
+\item[$\cdot$] Coût de la transmission : 10~g-eCO2 par Go (grammes équivalent~CO2 par giga-octets).\\
+  {\small Source : Ademe, d'après \url{negaoctet.org}}
+\item[$\cdot$] Exprimer ce coût en eq-café (coût~eCO2 équivalent à une tasse de café, en prenant un café de~20cl : 111~g-eCO2)
 \end{itemize}
+
+Noter que l'impact principal du numérique provient majoritairement de la \textbf{fabrication} des équipements.
+
+\begin{itemize}[itemsep=0.2ex]
+\item[$\cdot$] Convertir le coût eCO2 de fabrication d'un smartphone en équivalent café : 31kg-eCO2.
+\item[$\cdot$] À quelle fréquence changez-vous de smartphone ?
+\item[$\cdot$] Comparer avec un steak de boeuf : 7kg-eCO2 (oui, kg) {\footnotesize \color{gray}{(à quelle fréquence mangez-vous du boeuf ?)}}
+\end{itemize}
+
+\medskip
+
+Note : l'impact environnemental ne se limite pas aux gaz à effet de serre. Nous ne quantifions pas ici l'impact sur les ressources, notamment les métaux et terres rares
+utilisées pour la fabrication des équipements numériques.
+
 
 \section{Message vocal}
 
 \begin{itemize}
 \item[$\star$] Écrire un programme qui enregistre un son et l'envoie tel quel (utiliser l'acteur Vocal ci-dessous).
 \item[$\cdot$] Calculer la taille des données envoyées (en octets) pour le message de test, sachant que le son est échantillonné à 44000 Hz et un échantillon occupe 2 octets.
-\item[$\cdot$] coût CO2 et comparaison par rapport au message texte ????
+\item[$\cdot$] Quel est le rapport de taille entre le message vocal et le message texte ?
 \end{itemize}
 
 \lstinputlisting[language=Ada]{Ada/vocal.ads}
@@ -94,12 +111,13 @@ Pour ne pas gaspiller les ressources, cherchons à transmettre moins d'octets.
 \end{itemize}
 
 \begin{itemize}
-\item[$\cdot$] coût CO2 et comparaison par rapport au message texte ????
+\item[$\cdot$] Quel est le rapport de taille entre le message vocal compressé et le message texte ?
+\item[$\cdot$] Combien de messages vocaux envoyez-vous par an ?
+\item[$\cdot$] Exprimez le coût de ces messages vocaux en eq-café.
 \end{itemize}
 
 
 \lstinputlisting[language=Ada]{Ada/compression.ads}
-
 
 
 \section{Message vidéo}
@@ -112,20 +130,16 @@ Pour la vidéo~:
 \item[$\cdot$] Une image d'une vidéo est une matrice de taille 1920x1080. Chaque cellule contient un pixel coloré et occupe 3 octets (rouge, vert, bleu).
 \item[$\cdot$] La vidéo est constituée d'une succession d'images, avec un débit de 25 images par seconde (25 fps).
 \item[$\cdot$] Calculer la taille de la vidéo non compressée, en octets.
-\item[$\cdot$] Coût CO2 ?
+\item[$\cdot$] Quel est le rapport de taille avec le message texte ?
 \end{itemize}
 
-La vidéo se compresse très bien en tolérant une baisse de qualité.  (/ 120)
+La vidéo se compresse très bien en tolérant une baisse de qualité  (facteur de compression de 120).
 
+\begin{itemize}
+\item[$\cdot$] Calculer le rapport de taille entre un message vidéo compressé avec le son et un message texte.
+\item[$\cdot$] Combien de messages vidéo envoyez-vous par an ?
+\item[$\cdot$] Estimer le coût en eq-café par an.
+\end{itemize}
 
-
-code video ou pas ?
-
-calcul de la taille des données brutes / compressées (prendre en compte le son)
-
-Format 1920x1080
-
-
-\hword{highlight box} example
 
 \end{document}
