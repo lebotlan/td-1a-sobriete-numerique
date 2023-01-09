@@ -15,21 +15,16 @@ Source : les estimations environnementales proviennent de l'Ademe (\url{impactco
 
 Afin de regagner en souveraineté sur le secteur stratégique des réseaux sociaux pour collégiens, votre société a pour mission de développer une nouvelle application de communication rapide et bienveillante~: Bikbok.
 %% et surtout sensibilisant l'utilisateur aux problèmes d'environnement en affichant l'empreinte carbone du message
+\medskip
 
 Votre équipe est chargée d'écrire un démonstrateur capable d'\textbf{envoyer} les messages. Une autre équipe se charge de la réception et de l'affichage. Les types des messages sont :
-
-\begin{itemize}[itemsep=0.2ex]
-\item[$\cdot$] Texte
-\item[$\cdot$] Photo ?
-\item[$\cdot$] Vocal
-\item[$\cdot$] Vidéo
-\end{itemize}
+texte, vocal, ou vidéo.
 
 Pour la démonstration prévue dans deux semaines, le message envoyé sera, par exemple :
 
-\smallskip
+\medskip
 \centerline{\hword{\ Pour ce soir (@kollok) : pâtes ou pizza ?\ }}
-\smallskip
+\medskip
 
 Malgré le caractère confidentiel du message, il est envoyé en clair -- sans être chiffré. Ce message comprend 41 caractères, dure 3 secondes en vocal et en vidéo.
 
@@ -38,7 +33,7 @@ Malgré le caractère confidentiel du message, il est envoyé en clair -- sans �
 $\star$ Écrire un petit programme qui~:
 
 \begin{itemize}[itemsep=0.2ex]
-\item[$\cdot$] Utilise l'acteur Texte ci-dessous ;
+\item[$\cdot$] Utilise l'acteur Texte ci-après ;
 \item[$\cdot$] Récupère le message tapé par l'utilisateur ;
 \item[$\cdot$] Compte les destinataires mentionnés dans le message (e.g. @Estelle, @Leo, @Thomas). Une fonction auxiliaire sera bienvenue.
 \item[$\cdot$] Envoie le message.
@@ -61,10 +56,10 @@ La taille du message se mesure en octets : il faut maximum deux octets par carac
 Estimons l'ordre de grandeur de l'impact sur le réchauffement climatique (i.e. le coût eCO2, équivalent CO2).
 
 \begin{itemize}[itemsep=0.2ex]
-\item[$\cdot$] Combien de messages envoyez-vous par an ?
+\item[$\cdot$] Combien de messages envoyez-vous par an ? (à 10.000 près)
 \item[$\cdot$] Coût de la transmission : 10~g-eCO2 par Go (grammes équivalent~CO2 par giga-octets).\\
   {\small Source : Ademe, d'après \url{negaoctet.org}}
-\item[$\cdot$] Exprimer ce coût en eq-café (coût~eCO2 équivalent à une tasse de café, en prenant un café de~20cl : 111~g-eCO2)
+\item[$\cdot$] Exprimer ce coût dans une unité étudiant-compatible~: l'eq-café (coût~eCO2 équivalent à une tasse de café, en prenant un café de~20cl~: 111~g-eCO2)
 \end{itemize}
 
 Noter que l'impact principal du numérique provient majoritairement de la \textbf{fabrication} des équipements.
@@ -77,8 +72,7 @@ Noter que l'impact principal du numérique provient majoritairement de la \textb
 
 \medskip
 
-Note : l'impact environnemental ne se limite pas aux gaz à effet de serre. Nous ne quantifions pas ici l'impact sur les ressources, notamment les métaux et terres rares
-utilisées pour la fabrication des équipements numériques.
+Note : l'impact environnemental ne se limite pas aux gaz à effet de serre. Nous ne quantifions pas ici l'usage des ressources, notamment l'eau ou les métaux et terres rares largement utilisées pour la fabrication des équipements numériques.
 
 
 \oldsection{Message vocal}
