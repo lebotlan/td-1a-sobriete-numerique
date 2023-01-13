@@ -1,7 +1,5 @@
 with Texte ;
 
---with Gada.Text_IO ;
-
 procedure TD1a is
    
    package T renames Texte ;
@@ -18,13 +16,10 @@ procedure TD1a is
       end loop ;
       
       return Total ;
-   end Compter ;
-     
+   end Compter ;     
 	  
    Message : String := T.Lire_Champ_Texte ;
    
 begin
-   -- Question 1.2
-   T.Envoyer_Texte(Message, Compter(Message)) ;
-      
+   T.Envoyer_Texte(Message, Compter(Message)) ;      
 end TD1a ;

@@ -13,14 +13,14 @@ Source : les estimations environnementales proviennent de l'Ademe (\url{impactco
 
 \oldsection*{Contexte}
 
-Afin de regagner en souveraineté sur le secteur stratégique des réseaux sociaux pour collégiens, votre société a pour mission de développer une nouvelle application de communication rapide et bienveillante~: Bikbok.
+Afin de regagner en souveraineté sur le secteur stratégique des réseaux sociaux pour collégiens, votre société a pour mission de développer une nouvelle application de communication rapide et
+de haut niveau intellectuel~: Bikbok.
 %GA BikBook? 
 %% et surtout sensibilisant l'utilisateur aux problèmes d'environnement en affichant l'empreinte carbone du message
 \medskip
 
 Votre équipe est chargée d'écrire un démonstrateur capable d'\textbf{envoyer} les messages. Une autre équipe se charge de la réception et de l'affichage. Les types des messages sont :
-texte, vocal, ou vidéo.
-%GA texte, vocal ou vidéo (pas de virgule entre vocal et ou?)
+texte, vocal ou vidéo.
 Pour la démonstration prévue dans deux semaines, le message envoyé sera, par exemple :
 
 \medskip
@@ -28,7 +28,6 @@ Pour la démonstration prévue dans deux semaines, le message envoyé sera, par 
 \medskip
 
 Malgré le caractère confidentiel du message, il est envoyé en clair -- sans être chiffré. Ce message comprend 41 caractères, dure 3 secondes en vocal et en vidéo.
-%GA j'en compte 42, tu considéres un caractère d'échapement? ou je me gourre
 \oldsection{Message texte}
 
 $\star$ Écrire un petit programme qui~:
@@ -36,10 +35,9 @@ $\star$ Écrire un petit programme qui~:
 \begin{itemize}[itemsep=0.2ex]
 \item[$\cdot$] Utilise l'acteur Texte ci-après ;
 \item[$\cdot$] Récupère le message tapé par l'utilisateur ;
-\item[$\cdot$] Compte les destinataires mentionnés dans le message (e.g. @Estelle, @Leo, @Thomas). Une fonction auxiliaire sera bienvenue.
+\item[$\cdot$] Compte les destinataires mentionnés dans le message avec '@' (e.g. @Estelle, @Leo, @Thomas). Une fonction auxiliaire sera bienvenue.
 \item[$\cdot$] Envoie le message.
 \end{itemize}
-%GA j'aurais peut être précisé, un destinataire est précédé du caractère @ (e.g. @Estelle, @Leo, @Thomas)
 Une chaîne de caractères (String) est un tableau~:
 
 \begin{center}
@@ -54,42 +52,41 @@ Une chaîne de caractères (String) est un tableau~:
 \subsection*{Coût environnemental}
 
 La taille du message se mesure en octets : il faut maximum deux octets par caractère.
-Estimons l'ordre de grandeur de l'impact sur le réchauffement climatique (i.e. le coût eCO2, équivalent CO2).
-%GA j'aurais mis peut être (i.e. le coût en g - ou kg - eCO2, équivalent CO2)
+Estimons l'ordre de grandeur de l'impact sur le dérèglement climatique (i.e. le coût en g-eCO2, équivalent CO2).
 
 \begin{itemize}[itemsep=0.2ex]
 \item[$\cdot$] Combien de messages envoyez-vous par an ? (à 10.000 près)
 \item[$\cdot$] Coût de la transmission : 10~g-eCO2 par Go (grammes équivalent~CO2 par giga-octets).\\
   {\small Source : Ademe, d'après \url{negaoctet.org}}
-\item[$\cdot$] Exprimer ce coût dans une unité étudiant-compatible~: l'eq-café (coût~eCO2 équivalent à une tasse de café, en prenant un café de~20cl~: 111~g-eCO2)
+\item[$\cdot$] Exprimer le coût annuel dans une unité étudiant-compatible~: l'ecafé (coût~eCO2 équivalent à une tasse de café, en prenant un café de~20cl~: 1 ecafé = 111~g-eCO2)
 \end{itemize}
-%GA j'aurais mis peut-être ecafé!
-Noter que l'impact principal du numérique provient majoritairement de la \textbf{fabrication} des équipements.
-%GA j'aurais mis peut-être le pourcentage que l'on a trouvé pour appuyer le "majoritairement" aux alentours de 80%...
+
+Noter que l'impact principal du numérique provient majoritairement de la \textbf{fabrication} des équipements (plus de 80\% du coût eCO2 de l'usage numérique).
+
 \begin{itemize}[itemsep=0.2ex]
 \item[$\cdot$] Convertir le coût eCO2 de fabrication d'un smartphone en équivalent café : 31kg-eCO2.
 \item[$\cdot$] À quelle fréquence changez-vous de smartphone ?
-\item[$\cdot$] Comparer avec un steak de boeuf : 7kg-eCO2 (oui, kg) {\footnotesize \color{gray}{(à quelle fréquence mangez-vous du boeuf ?)}}
+\item[$\cdot$] Comparer avec un steak de boeuf : 7kg-eCO2 (oui, kg) {\footnotesize \color{gray}{(à quelle fréquence mangez-vous de la viande ?)}}
 \end{itemize}
 
 \medskip
 
-Note : l'impact environnemental ne se limite pas aux gaz à effet de serre. Nous ne quantifions pas ici l'usage des ressources, notamment l'eau ou les métaux et terres rares largement utilisées pour la fabrication des équipements numériques.
-%GA j'aurais mis l'eau, les métaux et les terres rares largement utilisés ...
+Note : l'impact environnemental ne se limite pas aux gaz à effet de serre. Nous ne quantifions pas ici l'usage des ressources, notamment l'eau, les métaux et terres rares largement utilisés pour la fabrication des équipements numériques.
 
 \oldsection{Message vocal}
 
 \begin{itemize}
-\item[$\star$] Écrire un programme qui enregistre un son et l'envoie tel quel (utiliser l'acteur Vocal ci-dessous).
+\item[$\star$] Écrire un programme qui enregistre et envoie un son sans compression (utiliser l'acteur Vocal ci-dessous).
 \item[$\cdot$] Calculer la taille des données envoyées (en octets) pour le message de test, sachant que le son est échantillonné à 44000 Hz et un échantillon occupe 2 octets.
 \item[$\cdot$] Quel est le rapport de taille entre le message vocal et le message texte ?
 \end{itemize}
-%GA peut-être : qui enregistre et envoie un son sans compression (utiliser l'acteur ...). 
 
 \lstinputlisting[language=Ada]{Ada/vocal.ads}
 
 La musique ou le son se compresse en général très bien sans altérer la qualité.
 Pour ne pas gaspiller les ressources, cherchons à transmettre moins d'octets.
+
+\vfill
 
 \begin{itemize}
 \item[$\star$] En préambule, écrire le corps de la procédure Copier ci-après. Cette procédure doit copier une partie du tableau Source dans le tableau Dest.
@@ -105,10 +102,9 @@ Pour ne pas gaspiller les ressources, cherchons à transmettre moins d'octets.
 \begin{itemize}
 \item[$\cdot$] Quel est le rapport de taille entre le message vocal compressé et le message texte ?
 \item[$\cdot$] Combien de messages vocaux envoyez-vous par an ?
-\item[$\cdot$] Exprimez le coût de ces messages vocaux en eq-café.
+\item[$\cdot$] Exprimer le coût de ces messages vocaux en ecafé.
 \end{itemize}
 
-%GA pour la partie message texte tu avais mis dans la même liste tout à l'infinitif.
 
 \lstinputlisting[language=Ada]{Ada/compression.ads}
 
@@ -117,7 +113,7 @@ Pour ne pas gaspiller les ressources, cherchons à transmettre moins d'octets.
 
 Pour la vidéo, il convient de distinguer le son et l'image. Le traitement du son est similaire à la question précédente.
 
-Pour la vidéo~:
+Pour l'image~:
 
 \begin{itemize}
 \item[$\cdot$] Une image d'une vidéo est une matrice de taille 1920x1080. Chaque cellule contient un pixel coloré et occupe 3 octets (rouge, vert, bleu).
@@ -127,10 +123,10 @@ Pour la vidéo~:
 \end{itemize}
 
 La vidéo se compresse très bien en tolérant une baisse de qualité  (facteur de compression de 120).
-%GA le facteur c'est 120 ou 1/120?
+%
 \begin{itemize}
-\item[$\cdot$] Calculer le rapport de taille entre un message vidéo compressé avec le son et un message texte.
+\item[$\cdot$] Calculer le rapport de taille entre un message vidéo compressé (avec le son) et un message texte.
 \item[$\cdot$] Combien de messages vidéo envoyez-vous par an ?
-\item[$\cdot$] Estimer le coût en eq-café par an.
+\item[$\cdot$] Estimer le coût en ecafé par an.
 \end{itemize}
 

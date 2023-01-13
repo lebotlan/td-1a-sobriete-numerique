@@ -4,8 +4,7 @@ with Vocal ; use Vocal ;
 package Compression is
    
    -- La fonction de compression prend un tableau d'entrée appelé segment
-   -- et renvoie un segment compressé 15 fois plus petit.
-   
+   -- et renvoie un segment compressé 15 fois plus petit.   
    Taux_Compression : constant Integer := 15 ;   
    
    -- Le segment d'entrée a une taille de 4096 entiers.
