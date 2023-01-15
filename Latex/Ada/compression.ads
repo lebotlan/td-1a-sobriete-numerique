@@ -8,8 +8,7 @@ package Compression is
    Taux_Compression : constant Integer := 15 ;   
    
    -- Le segment d'entrée a une taille de 4096 entiers.
-   Taille_Segment_Entree : constant Integer := 4096 ;
-   
+   Taille_Segment_Entree : constant Integer := 4096 ;   
    Taille_Segment_Sortie : constant Integer := Taille_Segment_Entree / Taux_Compression ;
    
    -- Compresse les données du segment d'entrée. 

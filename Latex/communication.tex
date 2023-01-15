@@ -53,7 +53,7 @@ Une chaîne de caractères (String) est un tableau~:
 \subsection*{Coût environnemental}
 
 La taille du message se mesure en octets : il faut maximum deux octets par caractère.
-Estimons l'ordre de grandeur de l'impact sur le dérèglement climatique (i.e. le coût en g-eCO2, équivalent CO2).
+Estimons l'ordre de grandeur de l'impact sur le dérèglement climatique (i.e. le coût en g-eCO2, g équivalent CO2).
 
 \begin{itemize}[itemsep=0.2ex]
 \item[$\cdot$] Combien de messages envoyez-vous par an ? (à 10.000 près)
@@ -94,9 +94,32 @@ Pour ne pas gaspiller les ressources, cherchons à transmettre moins d'octets.
   La partie copiée commence à la position SPos et sa longueur est Len. Elle est copiée à partir de la position DPos du tableau Dest.
 
   \begin{lstlisting}[language=Ada]
-    procedure Copier(Source : T_Tab ; SPos, Dpos, Len : Integer ; Dest : in out T_Tab) 
+    procedure Copier(Source : T_Tab ; Spos, Dpos, Len : Integer ; Dest : in out T_Tab) 
   \end{lstlisting}
-  
+%%
+\vspace{-4ex}
+\begin{center}
+\begin{tikzpicture}
+\small
+%%
+\newcommand{\caz}[2][]{\node[anchor=north](#1){$\ \cdot \ $} node[inner sep=0,draw=none,above=0]{\vphantom{012y}{\footnotesize #2}};}
+\newcommand{\cay}[2][]{\node[anchor=south](#1){$\ \cdot \ $} node[inner sep=0,draw=none,below=0]{\vphantom{012y}{\footnotesize #2}};}
+%%
+\def\psiz#1{{\tiny #1}}
+%
+  \matrix [nodes=draw,column sep=2ex] (m)
+  {
+    \caz{0};& |\caz{1}; & \caz{2}; & \caz{3} & \caz{...} & \caz{...} & \caz[spos]{\psiz{spos}} & \caz[sposp]{\psiz{spos+1}} & \caz[sposl]{...} & \caz{...} & \caz{...} & \caz{...} \\[2ex]
+    \cay{0};& |\cay{1}; & \cay{2}; & \cay{...} & \cay[dpos]{\psiz{dpos}} & \cay[dposp]{\psiz{dpos+1}} & \cay[dposl] {...} & \cay {...} & \cay {...} & \cay {...} & \cay {...} & \cay {...} \\
+  };
+%
+\draw[draw,->] (spos.south) ..controls +(0,-1ex) and +(0,1ex) .. (dpos.north) ;
+\draw[draw,->] (sposp.south) ..controls +(0,-1ex) and +(0,1ex) .. (dposp.north) ;
+\draw[draw,->] (sposl.south) ..controls +(0,-1ex) and +(0,1ex) .. (dposl.north) ;
+\end{tikzpicture}
+\end{center}
+\vspace{-3ex}
+%%  
   \item[$\star\star$] En utilisant l'acteur Compression, améliorez votre programme pour qu'il transmette moins d'octets.
 \end{itemize}
 
