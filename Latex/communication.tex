@@ -17,10 +17,11 @@ Afin de regagner en souveraineté sur le secteur stratégique des réseaux socia
 de haut niveau intellectuel~: Bikbok.
 %GA BikBook? 
 %% et surtout sensibilisant l'utilisateur aux problèmes d'environnement en affichant l'empreinte carbone du message
+%% [DLB] Oui mais comment faire ? L'impact d'un seul message sera tellement ridicule...
 \medskip
 
 Votre équipe est chargée d'écrire un démonstrateur capable d'\textbf{envoyer} les messages. Une autre équipe se charge de la réception et de l'affichage. Les types des messages sont :
-texte, vocal ou vidéo.
+texte, vocal, photo, ou vidéo.
 Pour la démonstration prévue dans deux semaines, le message envoyé sera, par exemple :
 
 \medskip
@@ -101,32 +102,63 @@ Pour ne pas gaspiller les ressources, cherchons à transmettre moins d'octets.
 
 \begin{itemize}
 \item[$\cdot$] Quel est le rapport de taille entre le message vocal compressé et le message texte ?
-\item[$\cdot$] Combien de messages vocaux envoyez-vous par an ?
-\item[$\cdot$] Exprimer le coût de ces messages vocaux en ecafé.
+\item[$\cdot$] Combien de messages vocaux envoyez-vous par an ? Exprimer le coût en ecafé par an.
 \end{itemize}
 
 
 \lstinputlisting[language=Ada]{Ada/compression.ads}
 
 
-\oldsection{Message vidéo}
+\oldsection{Envoi d'une photo}
 
-Pour la vidéo, il convient de distinguer le son et l'image. Le traitement du son est similaire à la question précédente.
-
-Pour l'image~:
+\begin{minipage}[t]{0.74\textwidth}
+En utilisant l'acteur Photo, écrire un programme qui~:
 
 \begin{itemize}
-\item[$\cdot$] Une image d'une vidéo est une matrice de taille 1920x1080. Chaque cellule contient un pixel coloré et occupe 3 octets (rouge, vert, bleu).
-\item[$\cdot$] La vidéo est constituée d'une succession d'images, avec un débit de 25 images par seconde (25 fps).
-\item[$\cdot$] Calculer la taille de la vidéo non compressée, en octets.
-\item[$\cdot$] Quel est le rapport de taille avec le message texte ?
+\item[$\cdot$] Prend une photo,
+\item[$\star$] Recadre la photo grâce à une fonction que vous écrivez~:
+  \begin{lstlisting}[language=Ada]
+    function Recadrer(Img : T_Image) return T_Image
+  \end{lstlisting}
+  %
+  Cette fonction détecte si l'image contient un signe de cadre fait avec les mains. Si oui, elle renvoie l'image située à l'intérieur du cadre, sinon elle renvoie l'image initiale.
+
+\item[$\cdot$] Compresse l'image, envoie l'image
+\end{itemize}
+\end{minipage}
+%%
+\hfill
+%%
+\begin{minipage}[t]{0.25\textwidth}
+\includegraphics[width=\linewidth,valign=t]{frame.png}
+\end{minipage}
+\medskip
+
+La photo est une matrice de taille 1920x1080. Chaque cellule contient un pixel coloré et occupe 3 octets (rouge, vert, bleu).
+Le taux de compression d'une image est de l'ordre de 10.
+
+\begin{itemize}
+\item[$\cdot$] Quel est le rapport de taille entre la photo compressée et le message texte ?
+\item[$\cdot$] Hors sujet : quel est le rapport de taille entre la photo d'un écran avec un programme Ada et le même programme Ada en tant que fichier texte (compter un texte de 2800 octets) ?
+\item[$\cdot$] Combien de photos transmettez-vous par an ? (noter que chaque photo prise est probablement envoyée sur votre drive)
+\item[$\cdot$] Exprimer le coût de transmission de ces photos en ecafé.
+\end{itemize}
+
+\lstinputlisting[language=Ada]{Ada/photo.ads}
+
+\oldsection{Message vidéo}
+
+Pour la vidéo, il convient de distinguer le son et l'image. Le traitement du son est similaire à la question~2. Pour les images,
+prendre la même taille que les photos (1920x1080) et 25 images par seconde (25 fps).
+
+\begin{itemize}
+\item[$\cdot$] Calculer la taille de la vidéo non compressée, en octets. Rapporter à la taille du message texte.
 \end{itemize}
 
 La vidéo se compresse très bien en tolérant une baisse de qualité  (facteur de compression de 120).
 %
 \begin{itemize}
 \item[$\cdot$] Calculer le rapport de taille entre un message vidéo compressé (avec le son) et un message texte.
-\item[$\cdot$] Combien de messages vidéo envoyez-vous par an ?
-\item[$\cdot$] Estimer le coût en ecafé par an.
+\item[$\cdot$] Combien de messages vidéo envoyez-vous par an ? Estimer le coût en ecafé par an.
 \end{itemize}
 
