@@ -80,3 +80,23 @@
 \let\oldsection\section
 \let\emptysection\titre
 
+%%
+%% Corrige
+%%
+\tikzstyle{corrige}=[cadre simple, fill=fondCorrige, draw=green!50!black]
+
+\newenvironment{reponse}{%
+\begin{cadre}[corrige, name=cadrecor]
+}{%
+\end{cadre}%
+\begin{tikzpicture}[remember picture, overlay]
+\node[rotate=90,anchor=south east, color=green!60!black] at (cadrecor.north west) {\Large Corrigé} ;
+\end{tikzpicture}
+}
+
+\ifcorrige
+\else
+\let\reponse\comment
+\let\endreponse\endcomment
+\fi
+

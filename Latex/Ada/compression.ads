@@ -2,19 +2,17 @@ with Vocal ; use Vocal ;
 
 -- Ce package permet de compresser des morceaux audio dans le format OGG.
 package Compression is
-   
-   -- La fonction de compression prend un tableau d'entrée appelé segment
-   -- et renvoie un segment compressé 15 fois plus petit.   
-   Taux_Compression : constant Integer := 15 ;   
-   
-   -- Le segment d'entrée a une taille de 4096 entiers.
-   Taille_Segment_Entree : constant Integer := 4096 ;   
-   Taille_Segment_Sortie : constant Integer := Taille_Segment_Entree / Taux_Compression ;
-   
-   -- Compresse les données du segment d'entrée. 
-   --   Le segment d'entrée doit avoir une taille égale à Taille_Segment_Entree ;
-   --   Renvoie un nouveau segment compressé, numéroté à partir de 0.
-   --   La taille du segment compressé est Taille_Segment_Sortie
+         
+   -- Compresse les données du tableau d'entrée. 
+   -- Renvoie un nouveau tableau environ 15 fois plus petit.
    function Compresser(Entree : T_Tab) return T_Tab ;
+   
+   -- Détection de silence au début du tableau.
+   -- Renvoie l'index de fin du silence / début du son.
+   function Silence_Debut(Tab : T_Tab) return Integer ;
+   
+   -- Idem pour du silence à la fin du tableau
+   -- Renvoie l'index de fin du son / début du silence.
+   function Silence_Fin(Tab : T_Tab) return Integer ;
    
 end Compression ;

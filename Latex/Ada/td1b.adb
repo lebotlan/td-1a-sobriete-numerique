@@ -6,58 +6,52 @@ procedure TD1b is
    package V renames Vocal ;
    package K renames Compression ;
    
-   -- Question 2.2
-   -- SPos : position dans la source
-   -- DPos : position dans la destination
-   procedure Copier(Source : V.T_Tab ; SPos : Integer ; Len : Integer ; Dest : in out V.T_Tab ; DPos : Integer) is
-   begin
-      for I in 0..Len - 1 loop
-	 Dest(DPos + I) := Source(SPos + I) ;
-      end loop ;
-   end Copier ;
-   
-   -- Question 2.3
-   function Tout_Compresser(Son : V.T_Tab) return V.T_Tab Is
+   function Rogner(Tab : V.T_Tab) return V.T_Tab is
+      -- Debut et fin du son à garder
+      Debut : Integer := K.Silence_Debut(Tab) ;
+      Fin : Integer := K.Silence_Fin(Tab) ;
       
-      -- On connait par avance la taille du tableau compressé.
-      Resultat : V.T_Tab(0 .. Son'Length / K.Taux_Compression - 1) ;
+      -- 250ms en nombre de cases
+      Marge : Integer := (V.F_Echantillonnage * 250) / 1000 ;
+   begin      
+      --------------------------------------------------------
+      -- Bonus : on élargit de 250ms.   (Facultatif)
+      Debut := Debut - Marge ;      
+      if Debut < 0 then Debut := 0 ; end if ;
       
-      -- Nombre de segments
-      -- Pour rappel, Son'length est un multiple de Taille_Segment_Max.
-      N_Morceaux : Integer := Son'Length / K.Taille_Segment_Entree ;
+      Fin := Fin + Marge ;
+      if Fin > Tab'Last then Fin := Tab'Last ; end if ;
+      -------------------------------------------------------
       
-      -- Segment d'entrée utilisé par le compresseur.
-      Segment : V.T_Tab (0..K.Taille_Segment_Entree - 1) ;
+      -- Donner le bloc declare si besoin      
+      declare
+         Resultat : V.T_Tab(Debut .. Fin) ;
+      begin
+         for Index in Resultat'Range loop
+            Resultat(Index) := Tab(Index) ;
+         end loop ;
+            
+         return Resultat ;
+      end ;
       
-      -- Segment de sortie
-      Sortie : V.T_Tab (0..K.Taille_Segment_Sortie - 1) ;
-   begin
       
-      -- Découpe en segments
-      for N in 0 .. N_Morceaux - 1 loop
-	 
-	 Copier(Son, N * K.Taille_Segment_Entree, K.Taille_Segment_Entree, Segment, 0) ;
-	 Sortie := K.Compresser(Segment) ;
-	 Copier(Sortie, 0, K.Taille_Segment_Sortie, Resultat, N * K.Taille_Segment_Sortie) ;
-	 
-      end loop ;
+      -- Variante avec des cases numérotées depuis 0
+      declare
+         Longueur : Integer := Fin - Debut + 1 ;
+         Resultat : V.T_Tab(0 .. Longueur - 1) ;
+      begin
+         for Index in Resultat'Range loop
+            Resultat(Index) := Tab(Debut + Index) ;
+         end loop ;
+            
+         return Resultat ;
+      end ;
       
-      return Resultat ;
-   end Tout_Compresser ;
+   end Rogner ;
    
    Son : V.T_Tab := Vocal.Enregistrer_Vocal ;
 begin
-   
-   -- Question 2.1
    Vocal.Envoyer_Son(Son) ;
-   
-   -- Taille du tableau : 2 octets/echantillons * 44000 echantillons/s * 3s = 264 000 octets  envoyés.
-   -- 4000 fois plus que le message texte
-   
-   -- Question 2.3
-   Vocal.Envoyer_Son( Tout_Compresser(Son) ) ;
-   
-   -- Taille du tableau : 15 fois moins, i.e. 17 600 octets.
-   -- 280 fois plus que le message texte.
-      
+   -- ou
+   Vocal.Envoyer_Son( K.Compresser( Rogner(Son) ) ) ;
 end TD1b ;

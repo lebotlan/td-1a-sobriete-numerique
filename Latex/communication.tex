@@ -11,6 +11,16 @@
 
 Source : les estimations environnementales proviennent de l'Ademe (\url{impactco2.fr}).
 
+\ifclimasup
+\oldsection*{Précisions}
+\begin{itemize}
+\item Le sujet de TD réel est présenté dans un format latex différent (d'où une mise en page parfois douteuse dans ce document).
+\item Il ne s'agit pas d'un sujet de TD sur l'impact environnemental du numérique. C'est principalement un sujet d'algorithmique de 1A, qui est orienté de manière à aborder rapidement quelques questions environnementales.
+\item L'espoir est tout de même d'inculquer certains réflexes dans l'usage numérique (envoyer du texte plutôt que de l'audio ou de la vidéo, pour les développeurs : compresser avant de transmettre)
+et de signaler que le coût environnemental provient majoritairement de la fabrication du matériel. (Et de mentionner en passant l'impact significatif de l'agriculture / élevage).
+\end{itemize}
+\fi
+
 \oldsection*{Contexte}
 
 Afin de regagner en souveraineté sur le secteur stratégique des réseaux sociaux pour collégiens, votre société a pour mission de développer une nouvelle application de communication rapide et
@@ -28,7 +38,8 @@ Pour la démonstration prévue dans deux semaines, le message envoyé sera, par 
 \centerline{\hword{\ Pour ce soir (@kollok) : pâtes ou pizza ?\ }}
 \medskip
 
-Malgré le caractère confidentiel du message, il est envoyé en clair -- sans être chiffré. Ce message comprend 41 caractères, dure 3 secondes en vocal et en vidéo.
+Malgré le caractère confidentiel du message, il est envoyé en clair -- sans être chiffré. Ce message comprend 41 caractères, dure 3 secondes en vocal et en vidéo (sans les silences
+de début et de fin).
 \oldsection{Message texte}
 
 $\star$ Écrire un petit programme qui~:
@@ -50,6 +61,10 @@ Une chaîne de caractères (String) est un tableau~:
 
 \lstinputlisting[language=Ada]{Ada/texte.ads}
 
+\begin{reponse}
+\lstinputlisting[language=Ada]{Ada/td1a.adb}
+\end{reponse}
+
 \subsection*{Coût environnemental}
 
 La taille du message se mesure en octets : il faut maximum deux octets par caractère.
@@ -62,6 +77,15 @@ Estimons l'ordre de grandeur de l'impact sur le dérèglement climatique (i.e. l
 \item[$\cdot$] Exprimer le coût annuel dans une unité étudiant-compatible~: l'ecafé (coût~eCO2 équivalent à une tasse de café, en prenant un café de~20cl~: 1 ecafé = 111~g-eCO2)
 \end{itemize}
 
+\begin{reponse}
+\begin{itemize}
+\item Probablement 10.000 ou 20.000 messages par an.
+\item En octets : $n \times 41 \times 2$, soit de l'ordre de $820.000$ octets. On peut arrondir à 1 Go, d'où 10g eCO2.
+\item En ecafé : 9\% d'un ecafé.
+\end{itemize}
+\end{reponse}
+
+
 Noter que l'impact principal du numérique provient majoritairement de la \textbf{fabrication} des équipements (plus de 80\% du coût eCO2 de l'usage numérique).
 
 \begin{itemize}[itemsep=0.2ex]
@@ -69,6 +93,14 @@ Noter que l'impact principal du numérique provient majoritairement de la \textb
 \item[$\cdot$] À quelle fréquence changez-vous de smartphone ?
 \item[$\cdot$] Comparer avec un steak de boeuf : 7kg-eCO2 (oui, kg) {\footnotesize \color{gray}{(à quelle fréquence mangez-vous de la viande ?)}}
 \end{itemize}
+
+\begin{reponse}
+\begin{itemize}
+\item 1 smartphone = 280 ecafés
+\item 1 steak = 63 ecafés
+\item Et donc 5 steaks dépassent le coût CO2 d'un smartphone... mais le steak n'a en général pas besoin de métaux rares.
+\end{itemize}
+\end{reponse}
 
 \medskip
 
@@ -82,6 +114,14 @@ Note : l'impact environnemental ne se limite pas aux gaz à effet de serre. Nous
 \item[$\cdot$] Quel est le rapport de taille entre le message vocal et le message texte ?
 \end{itemize}
 
+\begin{reponse}
+\begin{itemize}
+\item $44000 \times 2 \times 3$ soit $264.000$ octets (264 ko).
+\item Rapport de taille : le son occupe 3000 fois plus de place environ que le texte.
+\end{itemize}
+\end{reponse}
+
+
 \lstinputlisting[language=Ada]{Ada/vocal.ads}
 
 La musique ou le son se compresse en général très bien sans altérer la qualité.
@@ -89,6 +129,7 @@ Pour ne pas gaspiller les ressources, cherchons à transmettre moins d'octets.
 
 \vfill
 
+\iffalse
 \begin{itemize}
 \item[$\star$] En préambule, écrire le corps de la procédure Copier ci-après. Cette procédure doit copier une partie du tableau Source dans le tableau Dest.
   La partie copiée commence à la position SPos et sa longueur est Len. Elle est copiée à partir de la position DPos du tableau Dest.
@@ -123,10 +164,39 @@ Pour ne pas gaspiller les ressources, cherchons à transmettre moins d'octets.
   \item[$\star\star$] En utilisant l'acteur Compression, améliorez votre programme pour qu'il transmette moins d'octets.
 \end{itemize}
 
+\begin{reponse}
+\lstinputlisting[language=Ada]{Ada/td1b.adb}
+\end{reponse}
+\fi
+
+\begin{itemize}
+\item[$\cdot$] Commençons par retirer les silences au début et à la fin du message vocal.
+L'acteur Compression contient deux fonctions pour les détecter.
+%
+Écrire la fonction Rogner qui renvoie un nouveau tableau, sans les silence de début et de fin.
+  \begin{lstlisting}[language=Ada]
+   function Rogner(Tab : V.T_Tab) return V.T_Tab is ...
+   \end{lstlisting}
+%
+Bonus (facultatif) : pour éviter un effet de démarrage et de coupure du son désagréable, garder 250ms de silence au début et à la fin, si possible.
+
+\item[$\cdot$] Compresser et envoyer le message vocal rogné.
+\end{itemize}
+
+
+
 \begin{itemize}
 \item[$\cdot$] Quel est le rapport de taille entre le message vocal compressé et le message texte ?
 \item[$\cdot$] Combien de messages vocaux envoyez-vous par an ? Exprimer le coût en ecafé par an.
 \end{itemize}
+
+\begin{reponse}
+\begin{itemize}
+\item Le vocal compressé occupe 15 fois moins de place, soit 18ko environ.
+\item Rapport avec le message texte : 15 fois moins qu'en non compressé, donc un rapport de 200 environ.
+\item Oui, un message vocal est 200 fois plus coûteux qu'un message texte.
+\end{itemize}
+\end{reponse}
 
 
 \lstinputlisting[language=Ada]{Ada/compression.ads}
@@ -141,7 +211,7 @@ En utilisant l'acteur Photo, écrire un programme qui~:
 \item[$\cdot$] Prend une photo,
 \item[$\star$] Recadre la photo grâce à une fonction que vous écrivez~:
   \begin{lstlisting}[language=Ada]
-    function Recadrer(Img : T_Image) return T_Image
+    function Recadrer(Img : T_Image) return T_Image is ...
   \end{lstlisting}
   %
   Cette fonction détecte si l'image contient un signe de cadre fait avec les mains. Si oui, elle renvoie l'image située à l'intérieur du cadre, sinon elle renvoie l'image initiale.
@@ -157,6 +227,11 @@ En utilisant l'acteur Photo, écrire un programme qui~:
 \end{minipage}
 \medskip
 
+\begin{reponse}
+\lstinputlisting[language=Ada]{Ada/td1c.adb}
+\end{reponse}
+
+
 La photo est une matrice de taille 1920x1080. Chaque cellule contient un pixel coloré et occupe 3 octets (rouge, vert, bleu).
 Le taux de compression d'une image est de l'ordre de 10.
 
@@ -166,6 +241,19 @@ Le taux de compression d'une image est de l'ordre de 10.
 \item[$\cdot$] Combien de photos transmettez-vous par an ? (noter que chaque photo prise est probablement envoyée sur votre drive)
 \item[$\cdot$] Exprimer le coût de transmission de ces photos en ecafé.
 \end{itemize}
+
+\begin{reponse}
+\begin{itemize}
+\item Photo compressée : $1920 \times 1080 \times 3 / 10$ soit $622$ ko.
+\item Rapport avec le message texte : rapport de 8000 environ\\
+Une photo coûte 8000 fois plus qu'un petit message texte.
+\item Pour un programme Ada : vous transmettez 200 fois plus d'octets avec une photo d'écran qu'avec le fichier source.
+\item Combien de photos par an ? Prenons un peu large, par exemple 1000.
+\item 1000 photos prennent $0,6$ Go, que l'on arrondit à 1Go -- l'ordre de grandeur est donc une poignée de Go.
+\item Coût de transmission (le stockage a un coût négligeable devant la transmission) : 10g eCO2, cf messages texte.
+\end{itemize}
+\end{reponse}
+
 
 \lstinputlisting[language=Ada]{Ada/photo.ads}
 
@@ -178,10 +266,20 @@ prendre la même taille que les photos (1920x1080) et 25 images par seconde (25 
 \item[$\cdot$] Calculer la taille de la vidéo non compressée, en octets. Rapporter à la taille du message texte.
 \end{itemize}
 
-La vidéo se compresse très bien en tolérant une baisse de qualité  (facteur de compression de 120).
+La vidéo se compresse très bien en tolérant une baisse de qualité  (facteur de compression de 120 en haute qualité).
 %
 \begin{itemize}
-\item[$\cdot$] Calculer le rapport de taille entre un message vidéo compressé (avec le son) et un message texte.
+\item[$\cdot$] Calculer le rapport de taille entre un message vidéo compressé et un message texte.
 \item[$\cdot$] Combien de messages vidéo envoyez-vous par an ? Estimer le coût en ecafé par an.
 \end{itemize}
 
+\begin{reponse}
+\begin{itemize}
+\item Video non compressée : $1920 \times 1080 \times 3 \times 25 \times 3$ soit 466 Mo, c'est donc 5.000.000 fois plus que le message texte.
+\item Video compressée : 4 Mo (on néglige le son) soit 50.000 fois le message texte.
+\item Pour 200 videos de 3s par an, 0,8Go, encore arrondi à 1Go.
+\end{itemize}
+\end{reponse}
+
+
+%% TODO : en tant que développeur, faire des mises à jour régulières de l'application : calculer avec 10 millions d'utilisateurs.
