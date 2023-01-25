@@ -1,3 +1,10 @@
+%%
+%%  Autres idées à intégrer : obsolescence des matériels, impact de la fabrication des équipements, du renouvellement,  bien dimensionner : besoin de moins de puissance.
+%%
+%%  Piste : envisager une mise à jour du logiciel ?
+%%
+%%
+
 
 \emptysection{TD 1A Algorithmique}{Initiation aux tableaux\\Durée : 2H30}
 %%
@@ -173,7 +180,7 @@ Pour ne pas gaspiller les ressources, cherchons à transmettre moins d'octets.
 \item[$\cdot$] Commençons par retirer les silences au début et à la fin du message vocal.
 L'acteur Compression contient deux fonctions pour les détecter.
 %
-Écrire la fonction Rogner qui renvoie un nouveau tableau, sans les silence de début et de fin.
+Écrire la fonction Rogner qui renvoie un nouveau tableau, sans les silences de début et de fin.
   \begin{lstlisting}[language=Ada]
    function Rogner(Tab : V.T_Tab) return V.T_Tab is ...
    \end{lstlisting}
@@ -214,7 +221,8 @@ En utilisant l'acteur Photo, écrire un programme qui~:
     function Recadrer(Img : T_Image) return T_Image is ...
   \end{lstlisting}
   %
-  Cette fonction détecte si l'image contient un signe de cadre fait avec les mains. Si oui, elle renvoie l'image située à l'intérieur du cadre, sinon elle renvoie l'image initiale.
+  Cette fonction détecte si l'image contient un signe de cadre fait avec les mains (le téléphone étant alors tenu et manipulé avec la langue).
+  Si oui, elle renvoie l'image située à l'intérieur du cadre, sinon elle renvoie l'image initiale.
 
 \item[$\cdot$] Compresse l'image, envoie l'image
 \end{itemize}
